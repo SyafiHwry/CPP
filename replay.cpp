@@ -79,6 +79,19 @@ class Sorting{
                         swap(arr[i], arr[randomIndex]);
                     }
                 }
+                void bogoSort(int arr[], int length) {
+                    srand(time(NULL));
+                    int tries = 0;
+                    while (!isSorted(arr, n)) {
+                        shuffle(arr, n);
+                        tries++;
+                        cout << "Try " << tries << ": ";
+                        for (int i = 0; i < n; i++) {
+                            cout << arr[i] << " ";
+                        }
+                        cout << endl;
+                    }
+                }
         }
 };
 
