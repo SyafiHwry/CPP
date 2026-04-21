@@ -47,13 +47,13 @@ public:
     }
 
     int binary(int arr[], int left, int right, int find) {
-        while(left <= right) {
-            int mid = left + (right - left) / 2;
-            if(arr[mid] == find ) {
+        while(left <= right) { // 0 <= 10
+            int mid = left + (right - left) / 2; // mid = 0 + (10 - 0) / 2 = 5
+            if(arr[mid] == find ) { // arr[5] == find
                 cout << "Element Found at index-" << mid <<endl;
                 return mid;
             }
-            else if(arr[mid] < find) {
+            else if(arr[mid] < find) { // arr[5] < find
                 cout << "Checking right half element" <<endl;
                 left = mid + 1;
             }
@@ -136,7 +136,7 @@ int main() {
     cin >> answerSearching;
     
     if(answerSearching == 2) {
-        for(int i = 0; i < length - 1; i++) {
+        for(int i = length - 1; i > 0; i--) {
             if(arr[i] > arr[i + 1]) {
                 cout << "Pilih Sorting yang akan anda lakukan: " <<endl;
                 cout << "1. Bogo Sort\n2. Bubble Sort\n3. Insertion Sort\n4. Merge Sort\n5. Selection Sort\n6. Swap" <<endl;
@@ -147,13 +147,13 @@ int main() {
                         cout << "Bogo Sort: " <<endl;
                         bogoSort.bogoSort(arr, length);
                         asking(find);
-                        obj.binary(arr, 0, length - 1, find);
+                        obj.binary(arr, 0, length-1, find);
                         break;
                     case 2:
                         cout << "Bubble Sort: " <<endl;
                         bubbleSort.bubbleSort(arr, length);
                         asking(find);
-                        obj.binary(arr, 0, length - 1, find);
+                        obj.binary(arr, 0, length-1, find);
                         break;
                     case 3:
                         cout << "Insertion Sort: " <<endl;
@@ -173,6 +173,7 @@ int main() {
             } else{
                 asking(find);
                 obj.binary(arr, 0, length - 1, find);
+                break;
             }
         }
     } else if (answerSearching == 1){
