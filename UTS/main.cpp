@@ -60,13 +60,11 @@ class Parkir{
         }
 
         float avg(int arr[], int jumlah) {
+            int total = 0;
             for(int i = 0; i < jumlah; i++) {
-                arr[i]=+ arr[i+1];
-                cout << arr[i];
+                total += arr[i];
             }
-            // float hasil = avg(arr, jumlah)/jumlah;
-            // cout << hasil;
-            // return hasil;
+            return (float) total / jumlah;
         }
 };
 
@@ -120,6 +118,5 @@ int main() {
     }
     cout << "Durasi Parkir terpendek: " << arr[0] <<endl;
     cout << "Durasi Parkir Terlama: " << arr[jumlah - 1] <<endl;
-    cout << "Rata-rata hasil: ";
-    obj.avg(arr, jumlah);
+    cout << "Rata-rata hasil: " << obj.avg(arr, jumlah) << endl;
 }   
