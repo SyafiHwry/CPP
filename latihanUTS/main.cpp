@@ -24,35 +24,26 @@ class Book{
             }
         }
 
-        // int binarySearch(int arr[], int l, int r, int x) {
-        //     while(l <= r) {
-        //         int mid = l + (r - l) / 2;
-        //         if(arr[mid] == x) {
-        //             cout << "Element found at index " << mid << endl;
-        //             return mid;
-        //         }
-        //         else if(arr[mid] < x) {
-        //             cout << "Checking right half of the array." << endl;
-        //             l = mid + 1;
-        //         }
-        //         else {
-        //             cout << "Checking left half of the array." << endl;
-        //             r = mid - 1;
-        //         }
-        //     }
-        //     return -1;
-        // }
-
-        int linearSearch(int arr[], int n, int x) {
-            for(int i = 0; i < n; i++) {
-                if(arr[i] == x) {
-                    cout << "Element found at index " << i << endl;
-                    // return i;
+        int binarySearch(int arr[], int l, int r, int x) {
+            while(l <= r) {
+                int mid = l + (r - l) / 2;
+                if(arr[mid] == x) {
+                    int i = 1, count = 1;
+                    cout << "Element found at index " << mid << endl;
+                    return mid;
+                    while(i >= 0 && arr[i] == x) {
+                        count++;
+                        i--;
+                    }
                 }
-                else{
-                    cout << "Element not found in the array" << endl;
+                else if(arr[mid] < x) {
+                    cout << "Checking right half of the array." << endl;
+                    l = mid + 1;
                 }
-                cout << "Checking element at index " << i << endl;
+                else {
+                    cout << "Checking left half of the array." << endl;
+                    r = mid - 1;
+                }
             }
             return -1;
         }
@@ -63,6 +54,7 @@ int main() {
     
     Book obj;
     int jumlah;
+    int target;
     
     cout << "berapa jumlah index: ";
     cin >> jumlah;
@@ -88,12 +80,33 @@ int main() {
     cout << "Berapa angka yang ingin anda cari: ";
     cin >> x;
 
-    // int result = obj.binarySearch(arr, 0, jumlah - 1, x);
-    // if(result == -1) {
-    //     cout << "Element not found in the array" << endl;
-    // }
+    int result = obj.binarySearch(arr, 0, jumlah - 1, x);
+    if(result == -1) {
+        cout << "Element not found in the array" << endl;
+    }
 
-    int result = obj.linearSearch(arr, jumlah, x);
+    if (result == -1) {
+        cout << "\nData "<< x << " tidak ditemukan\n";
+    } else {
+        // HITUNG JUMLAH DUPLIKAT
+        int count = 1;
+        // cek kiri
+        int i = result - 1; // 0
+        while (i >= 0 && arr[i] == x) {
+            count++;
+            i--;
+        }
+
+        // cek kanan
+        i = result + 1;
+        while (i < jumlah && arr[i] == x) {
+            count++;
+            i++;
+        }
+
+        cout << "\nData "  << x << " ditemukan pada index: " << result << endl;
+        cout << "Jumlah buku dengan " << x << " halaman: " << count << endl;
+    }
 
     return 0;
 }

@@ -42,7 +42,7 @@ void printList(Node* head) {
         cout << current->data <<" ";
         current = current->next;
     }
-    cout <<endl;
+    
 }
 
 int main() {
